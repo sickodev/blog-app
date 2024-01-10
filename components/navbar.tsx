@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { ModeToggle } from "./mode-toggle";
 import { UserButton } from "@clerk/nextjs";
-import { HomeIcon } from "@radix-ui/react-icons";
+import { GlobeIcon, HomeIcon } from "@radix-ui/react-icons";
 import {
     Tooltip,
     TooltipContent,
@@ -25,10 +25,10 @@ const Navbar = () => {
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link
-                                href={"/home/rooms"}
+                                href={"/rooms"}
                                 className='border rounded-full p-[7px] dark:bg-zinc-950 bg-zinc-50 shadow-sm dark:shadow-none'
                             >
-                                <HomeIcon className='h-5 w-5' />
+                                <GlobeIcon className='h-5 w-5' />
                             </Link>
                         </TooltipTrigger>
                         <TooltipContent>

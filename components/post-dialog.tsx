@@ -9,12 +9,21 @@ import {
     DialogTrigger,
 } from "./ui/dialog";
 import { Button } from "./ui/button";
-import { Form } from "./ui/form";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "./ui/form";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { Separator } from "./ui/separator";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 const fromSchema = z.object({
     title: z
@@ -37,7 +46,7 @@ const PostDialog = ({ imageUrl }: { imageUrl: string }) => {
         <Dialog>
             <DialogTrigger
                 asChild
-                className='w-full bg-zinc-900/60 rounded-xl p-4 cursor-pointer'
+                className='md:w-full w-[1000px] dark:bg-zinc-900/60 bg-zinc-100 rounded-xl p-4 cursor-pointer'
             >
                 <div className='space-y-4'>
                     <div className='flex items-center space-x-4'>
@@ -74,7 +83,71 @@ const PostDialog = ({ imageUrl }: { imageUrl: string }) => {
                     </DialogDescription>
                     <Separator className='bg-sky-400' />
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)}></form>
+                        <form
+                            onSubmit={form.handleSubmit(onSubmit)}
+                            className='space-y-2'
+                        >
+                            <FormField
+                                control={form.control}
+                                name='title'
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Title</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                placeholder='Title'
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name='imageUrl'
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Image</FormLabel>
+                                        <FormControl>
+                                            <Input type='file' {...field} />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name='content'
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Content</FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                rows={15}
+                                                placeholder='Content for your blog'
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <div className='flex justify-end space-x-2'>
+                                <Button
+                                    type='button'
+                                    variant='outline'
+                                    className='border-slate-500'
+                                >
+                                    Schedule
+                                </Button>
+                                <Button
+                                    type='submit'
+                                    variant='outline'
+                                    className='border-sky-600'
+                                >
+                                    Submit
+                                </Button>
+                            </div>
+                        </form>
                     </Form>
                 </DialogHeader>
             </DialogContent>

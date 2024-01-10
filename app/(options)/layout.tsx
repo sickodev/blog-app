@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 import RightSidebar from "@/components/right-sidebar";
 import React from "react";
 
-const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+const OptionLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
             <div className='flex justify-between space-x-2 h-screen'>
@@ -15,4 +15,4 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default HomeLayout;
+export default OptionLayout;

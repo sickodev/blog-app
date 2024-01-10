@@ -25,6 +25,7 @@ export default function RootLayout({
                 baseTheme: dark,
                 elements: {
                     formButtonPrimary: "bg-green-500 hover:bg-green-700",
+                    card: "border border-sky-500",
                 },
             }}
         >
